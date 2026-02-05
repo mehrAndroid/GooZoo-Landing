@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b0f1a" />
+  <meta name="description" content="GooZoo — Build your real team, practice teamwork, then move together to Follow Me." />
+  <title>GooZoo — Build Your Team</title>
+
+  <style>
+    :root{
+      --bg: #0b0f1a;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.10);
+      --txt: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 980px;
+      --accent: #7c3aed;
+      --accent2: #22c55e;
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(124,58,237,.20), transparent 60%),
+        radial-gradient(900px 600px at 80% 20%, rgba(34,197,94,.14), transparent 55%),
+        radial-gradient(900px 600px at 50% 90%, rgba(59,130,246,.12), transparent 60%),
+        var(--bg);
+      color: var(--txt);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      padding: 16px 14px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 0;
+    }
+    .logo{
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(124,58,237,.9), rgba(34,197,94,.65));
+      box-shadow: 0 10px 25px rgba(124,58,237,.25);
+      border: 1px solid rgba(255,255,255,.18);
+      flex: 0 0 auto;
+    }
+    .brand h1{
+      font-size: 16px;
+      margin:0;
+      line-height:1.2;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      letter-spacing:.2px;
+    }
+    .brand p{
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .top-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease, opacity .15s ease;
+      user-select:none;
+      cursor:pointer;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.18);
+    }
+    .btn.primary{
+      border-color: rgba(124,58,237,.45);
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(124,58,237,.25));
+    }
+    .btn.disabled{
+      opacity:.55;
+      cursor:not-allowed;
+    }
+    .btn.disabled:hover{
+      transform:none;
+      background: rgba(255,255,255,.06);
+      border-color: var(--border);
+    }
+
+    main{ margin-top: 20px; }
+
+    .hero{
+      padding: 22px 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 16px 48px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h2{
+      margin:0;
+      font-size: 22px;
+      line-height:1.4;
+      letter-spacing:.2px;
+    }
+    .hero p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 14px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .card{
+      grid-column: span 12;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 16px 48px rgba(0,0,0,.30);
+      padding: 16px 14px;
+      backdrop-filter: blur(10px);
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size: 14px;
+      color: rgba(255,255,255,.86);
+      letter-spacing: .2px;
+    }
+    .card p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .links{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .link{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .link:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+    }
+    .link.disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      pointer-events:none;
+    }
+    .link .meta{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width:0;
+    }
+    .link .title{
+      font-size: 13px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .link .sub{
+      font-size: 11px;
+      color: var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .pill{
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      flex: 0 0 auto;
+      white-space:nowrap;
+    }
+
+    .bullets{
+      margin:10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+    .bullets li{ margin: 4px 0; }
+
+    details{
+      margin-top: 12px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+      padding: 10px 12px;
+    }
+    summary{
+      cursor: pointer;
+      color: rgba(255,255,255,.86);
+      font-size: 13px;
+      list-style: none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .detail-body{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+      white-space: pre-wrap;
+    }
+
+    footer{
+      margin-top: 18px;
+      color: rgba(255,255,255,.50);
+      font-size: 12px;
+      text-align:center;
+    }
+
+    @media (min-width: 860px){
+      .card.left{ grid-column: span 7; }
+      .card.right{ grid-column: span 5; }
+    }
+    @media (max-width: 520px){
+      .links{ grid-template-columns: 1fr; }
+      .top-actions{ width:100%; justify-content:flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div style="min-width:0">
+          <h1>GOOZOO</h1>
+          <p>Build a real team • Practice teamwork • Then move together to Follow Me</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <!-- Download is not ready yet -->
+        <span class="btn primary disabled" title="Coming soon on Google Play">Download (Coming Soon)</span>
+        <a class="btn" href="#links">Links</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h2>You’ve been invited to a team — not just an app.</h2>
+        <p>
+          GooZoo helps you organize a <b>real operational team</b> of friends and supporters.
+          You practice how to move together, stay active, and build trust — step by step.
+          When your team is ready, you can enter the next stage together: <b>Follow Me</b>,
+          where groups can define internet-based projects and share results like a true championship squad.
+        </p>
+      </section>
+
+      <section class="grid" id="links">
+        <div class="card left">
+          <h3>What GooZoo is for</h3>
+          <p>
+            In today’s world, income and opportunity are no longer limited to the physical world.
+            Massive resources flow in the digital space — and to capture them, we must learn to work as a team.
+            GooZoo is the training ground: build your team here, organize it, and prepare for Follow Me.
+          </p>
+
+          <ul class="bullets">
+            <li><b>Create your team</b> from people you actually know.</li>
+            <li><b>Stay active</b> through simple invitations and friendly messages.</li>
+            <li><b>Build trust</b> through consistent, human interaction — not empty numbers.</li>
+            <li><b>Practice teamwork</b> like training for a competition.</li>
+            <li><b>Move together</b> to Follow Me when your network is ready.</li>
+          </ul>
+
+          <div class="links" style="margin-top:14px">
+            <!-- Replace # with your real repo later -->
+            <a class="link" href="#" target="_blank" rel="noreferrer" title="Add your GitHub repository URL here">
+              <div class="meta">
+                <div class="title">GitHub Repo</div>
+                <div class="sub">Source code & documentation</div>
+              </div>
+              <div class="pill">Open</div>
+            </a>
+
+            <!-- Replace # with your website/landing later -->
+            <a class="link" href="#" target="_blank" rel="noreferrer" title="Optional: your website or landing page">
+              <div class="meta">
+                <div class="title">Website</div>
+                <div class="sub">Main page / demo</div>
+              </div>
+              <div class="pill">Visit</div>
+            </a>
+
+            <!-- Contact: replace with your email or socials -->
+            <a class="link" href="mailto:your@email.com" title="Replace with your real contact email">
+              <div class="meta">
+                <div class="title">Contact</div>
+                <div class="sub">Email / social link</div>
+              </div>
+              <div class="pill">Ping</div>
+            </a>
+
+            <!-- Download coming soon -->
+            <div class="link disabled" title="Coming soon on Google Play (QR + link will be added)">
+              <div class="meta">
+                <div class="title">Download</div>
+                <div class="sub">Google Play link + QR (coming soon)</div>
+              </div>
+              <div class="pill">Soon</div>
+            </div>
+          </div>
+
+          <details>
+            <summary>Read: What does “GOOZOO” mean?</summary>
+            <div class="detail-body">WHAT DOES “GOOZOO” MEAN?
+
+GOOZOO is made of two parts:
+
+GOO — GOAL-ORIENTED ORGANIZATION
+Move with purpose, not confusion.
+Know why we are together, and where we’re going.
+
+ZOO — ZENITH OUTREACH OUTCOMES
+Reach real outcomes through teamwork, support, and moving together.
+Not blind competition. Not climbing on other people’s shoulders.
+
+AND YES… ONE FUNNY DETAIL 🙂
+
+In Persian, “GooZoo” can sound like a playful word that makes people smile.
+But here, it’s up to you what you want it to mean.
+
+For some people, GooZoo is simply a warm way to send a friendly, human message.
+For others, it’s the start of a bigger journey.</div>
+          </details>
+
+          <details>
+            <summary>Read: How does GooZoo work, and how it leads to Follow Me?</summary>
+            <div class="detail-body">HOW DOES GOOZOO WORK?
+
+In GooZoo, a network grows slowly — but it grows for real:
+• People follow each other because they actually know each other
+• Interaction matters more than numbers
+• Trust is built step by step
+
+WHERE DOES GOOZOO START?
+
+With a simple human message.
+You can:
+• write a friendly invitation text
+• choose a photo or a short video
+• add gentle music if you want
+• preview exactly what the other person will receive
+
+Then you decide how to send it:
+WhatsApp, Telegram, SMS, email, or any other app.
+
+WHEN THE NETWORK IS READY
+
+When a network:
+• reaches a solid level of trust
+• stays active
+• and becomes able to move as a group
+
+the members can request to enter the next stage together: FOLLOW ME
+
+WHAT IS FOLLOW ME?
+
+Follow Me is a platform for collective movement.
+At this stage:
+• shared goals are defined as internet-based projects or businesses
+• the network works toward those goals using Follow Me tools
+• the results are shared among the contributors
+
+Here:
+• profit comes from real activity
+• not promises
+• not just recruiting people</div>
+          </details>
+        </div>
+
+        <div class="card right">
+          <h3>Highlights</h3>
+          <p>Fast, human, team-first — designed to feel like an invitation to compete in the “life championship”.</p>
+
+          <div style="margin-top:10px; display:flex; flex-direction:column; gap:10px">
+            <div class="link" style="cursor:default">
+              <div class="meta">
+                <div class="title">Team Builder</div>
+                <div class="sub">Define & organize your real network</div>
+              </div>
+              <div class="pill">Core</div>
+            </div>
+
+            <div class="link" style="cursor:default">
+              <div class="meta">
+                <div class="title">Trust Over Numbers</div>
+                <div class="sub">Activity matters more than followers count</div>
+              </div>
+              <div class="pill">Core</div>
+            </div>
+
+            <div class="link" style="cursor:default">
+              <div class="meta">
+                <div class="title">Gateway to Follow Me</div>
+                <div class="sub">Train here, then launch together</div>
+              </div>
+              <div class="pill">Next</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="y"></span> — GooZoo • Ready for GitHub Pages
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
