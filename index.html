@@ -94,11 +94,38 @@
     }
 
     .top-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  align-items:center;
+}
+
+.qr-badge{
+  width: 110px;
+  height: 110px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.06);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.qr-badge:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.09);
+  border-color: rgba(255,255,255,.18);
+}
+
+.qr-badge img{
+  width: 96px;
+  height: 96px;
+  display:block;
+  border-radius: 12px;
+}
 
     .btn{
       display:inline-flex;
@@ -300,10 +327,17 @@
       </div>
 
       <div class="top-actions">
-        <!-- Download is not ready yet -->
-        <span class="btn primary disabled" title="Coming soon on Google Play">Download (Coming Soon)</span>
-        <a class="btn" href="#links">Links</a>
-      </div>
+
+  <!-- CHANGED: Links now goes to Google Play -->
+  <a class="btn" href="https://play.google.com/store/apps/details?id=com.mehrandroid.goozoo" target="_blank" rel="noreferrer">
+    Link
+  </a>
+
+  <!-- NEW: QR in top-right (click = Google Play) -->
+  <a class="qr-badge" href="https://play.google.com/store/apps/details?id=com.mehrandroid.goozoo" target="_blank" rel="noreferrer" title="Scan or click to open GooZoo on Google Play">
+    <img src="./assets/goozoo_qr.png" alt="GooZoo QR" />
+  </a>
+</div>
     </header>
 
     <main>
@@ -335,23 +369,22 @@
           </ul>
 
           <div class="links" style="margin-top:14px">
-  <!-- Replace # with your real repo later -->
-  <a class="link" href="#" target="_blank" rel="noreferrer" title="Add your GitHub repository URL here">
-    <div class="meta">
-      <div class="title">GitHub Repo</div>
-      <div class="sub">Source code & documentation</div>
-    </div>
-    <div class="pill">Open</div>
-  </a>
+  <a class="link" href="https://mehrandroid.github.io/GooZoo-privacy/" target="_blank" rel="noreferrer" title="Open GooZoo Privacy Policy">
+  <div class="meta">
+    <div class="title">Privacy Policy</div>
+    <div class="sub">Read our privacy policy</div>
+  </div>
+  <div class="pill">Open</div>
+</a>
 
   <!-- Replace # with your website/landing later -->
-  <a class="link" href="#" target="_blank" rel="noreferrer" title="Optional: your website or landing page">
-    <div class="meta">
-      <div class="title">Website</div>
-      <div class="sub">Main page / demo</div>
-    </div>
-    <div class="pill">Visit</div>
-  </a>
+  <a class="link" href="https://play.google.com/store/apps/dev?id=7135884264466761657" target="_blank" rel="noreferrer">
+  <div class="meta">
+    <div class="title">Website</div>
+    <div class="sub">MehrAndroid on Google Play</div>
+  </div>
+  <div class="pill">Visit</div>
+</a>
 
   <!-- Contact -->
   <a class="link" href="mailto:support@mehrandroid.com">
@@ -362,14 +395,13 @@
     <div class="pill">Ping</div>
   </a>
 
-  <!-- Download coming soon -->
-  <div class="link disabled" title="Coming soon on Google Play (QR + link will be added)">
-    <div class="meta">
-      <div class="title">Download</div>
-      <div class="sub">Google Play link + QR (coming soon)</div>
-    </div>
-    <div class="pill">Soon</div>
+  <a class="link" href="https://play.google.com/store/apps/details?id=com.mehrandroid.goozoo" target="_blank" rel="noreferrer" title="Open GooZoo on Google Play">
+  <div class="meta">
+    <div class="title">Download</div>
+    <div class="sub">Open on Google Play</div>
   </div>
+  <div class="pill">Open</div>
+</a>
 </div>
 
           <details>
